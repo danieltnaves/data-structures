@@ -46,6 +46,24 @@ public class LinkedList {
         return null;
     }
 
+    /*
+     * Reverse a singly linked list.
+     */
+    public ListNode reverse(ListNode head) {
+        ListNode previous = null;
+        ListNode current = head;
+        ListNode next = null;
+        //n1 -> n2 -> n3
+        //n1 <- n2 <- n3
+        while (current != null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }
+
 }
 
 class ListNode {
