@@ -1,5 +1,8 @@
 package linkedlist;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedList {
 
     /**
@@ -62,6 +65,45 @@ public class LinkedList {
             current = next;
         }
         return previous;
+    }
+
+    /**
+     * The time complexity for this approach is O (n + m) and space complexity is O(n) or O(m). The reason for
+     * O(n) or O(m) complexity is related to additional HashSet data structure.
+     *
+     */
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> set = new HashSet<>();
+        ListNode current = headA;
+        while (current != null) {
+            set.add(current);
+            current = current.next;
+        }
+        current = headB;
+        while (current != null) {
+            if (set.contains(current)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
+    public ListNode getIntersectionNodeTwoPointers(ListNode headA, ListNode headB) {
+        Set<ListNode> set = new HashSet<>();
+        ListNode current = headA;
+        while (current != null) {
+            set.add(current);
+            current = current.next;
+        }
+        current = headB;
+        while (current != null) {
+            if (set.contains(current)) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
     }
 
 }
