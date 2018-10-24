@@ -90,20 +90,48 @@ public class LinkedList {
     }
 
     public ListNode getIntersectionNodeTwoPointers(ListNode headA, ListNode headB) {
-        Set<ListNode> set = new HashSet<>();
-        ListNode current = headA;
-        while (current != null) {
-            set.add(current);
-            current = current.next;
+
+        int headASize = getLinkedListSize(headA);
+        int headBSize = getLinkedListSize(headB);
+        int difference = Math.abs(headASize - headBSize);
+
+        ListNode bigger;
+        ListNode smaller;
+
+        if (headASize > headBSize) {
+            bigger = headA;
+            smaller = headB;
+        } else {
+            bigger = headB;
+            smaller = headA;
         }
-        current = headB;
-        while (current != null) {
-            if (set.contains(current)) {
-                return current;
-            }
-            current = current.next;
+
+        int i = 0;
+
+        //to start at same point
+        while (i < difference) {
+            bigger = bigger.next;
+            i++;
         }
+
+        while (bigger != null && smaller != null) {
+            if (bigger == smaller) return bigger;
+            bigger = bigger.next;
+            smaller = smaller.next;
+        }
+
         return null;
+    }
+
+    public int getLinkedListSize(ListNode listNode) {
+        if (listNode == null) return 0;
+        int counter = 0;
+        ListNode current = listNode;
+        while (current != null) {
+            counter++;
+            current = current.next;
+        }
+        return counter;
     }
 
 }
