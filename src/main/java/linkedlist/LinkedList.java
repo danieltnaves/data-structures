@@ -155,6 +155,29 @@ public class LinkedList {
         return head;
     }
 
+    /**
+     * Remove all elements from a linked list of integers that have value val.
+     */
+    public ListNode removeElements(ListNode head, int val) {
+        if (head == null) return null;
+        ListNode prev = null;
+        ListNode cur = head;
+        while (cur != null) {
+            if (prev == null && cur.val == val) {
+                head = head.next;
+                cur = head;
+                continue;
+            } else if (cur.val == val) {
+                prev.next = cur.next;
+                cur = prev.next;
+                continue;
+            }
+            prev = cur;
+            cur = cur.next;
+        }
+        return head;
+    }
+
 }
 
 class ListNode {

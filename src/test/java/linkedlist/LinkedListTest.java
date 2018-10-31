@@ -166,4 +166,30 @@ public class LinkedListTest {
         ListNode intersectionNode = linkedList.getIntersectionNodeTwoPointers(a1, b1);
         assertEquals(c1, intersectionNode);
     }
+
+    @Test
+    public void testRemoveElements() {
+        LinkedList linkedList = new LinkedList();
+        ListNode n1 = new ListNode(1);
+        ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(2);
+        ListNode n4 = new ListNode(4);
+        ListNode n5 = new ListNode(5);
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+
+        linkedList.removeElements(n1, 2);
+
+        String expectedOrderString = "145";
+        StringBuilder sb = new StringBuilder();
+        ListNode p = n1;
+        while (p != null) {
+            sb.append(p.val);
+            p = p.next;
+        }
+
+        assertEquals(expectedOrderString, sb.toString());
+    }
 }
