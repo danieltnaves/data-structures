@@ -106,6 +106,27 @@ public class LinkedList {
         return null;
     }
 
+    /**
+     * Given a linked list, remove the n-th node from the end of list and return its head.
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode slower = head;
+        ListNode faster = head;
+        for (int i = 0; i < n; i++) {
+            faster = faster.next;
+        }
+        if (faster == null) {
+            head = head.next;
+            return head;
+        }
+        while (faster.next != null) {
+            slower = slower.next;
+            faster = faster.next;
+        }
+        slower.next = slower.next.next;
+        return head;
+    }
+
 }
 
 class ListNode {
