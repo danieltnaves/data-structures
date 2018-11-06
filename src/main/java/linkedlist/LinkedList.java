@@ -69,7 +69,7 @@ public class LinkedList {
 
     /**
      * The time complexity for this approach is O (n + m) and space complexity is O(n) or O(m). The reason for
-     * O(n) or O(m) complexity is related to additional HashSet data structure.
+     * O(n) or O(m) complexity is related to additional HashSetProblems data structure.
      *
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
