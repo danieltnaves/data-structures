@@ -71,4 +71,16 @@ class Node {
         return bfs;
     }
 
+    public int maxDepth(Node node) {
+
+        if (node == null) {
+            return 0;
+        }
+
+        int lefDepth = maxDepth(node.left);
+        int rightDepth = maxDepth(node.right);
+
+        return Math.max(lefDepth, rightDepth) + 1;
+    }
+
 }
