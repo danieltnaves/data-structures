@@ -1,5 +1,10 @@
 package trees;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 class Node {
 
     Node left, right;
@@ -37,4 +42,33 @@ class Node {
             right.printInOrder();
         }
     }
+
+    /**
+     * Prints the tree using Breadth-first search
+     *
+     */
+    public List<Integer> getBFS() {
+
+        List<Integer> bfs = new ArrayList<>();
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(this);
+
+        while (!queue.isEmpty()) {
+
+            Node node = queue.poll();
+            bfs.add(node.data);
+
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+
+        }
+
+        return bfs;
+    }
+
 }
