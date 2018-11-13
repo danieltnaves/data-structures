@@ -33,11 +33,40 @@ class Node {
         }
     }
 
+    /**
+     * Depth-first search IN ORDER - DFS
+     */
     public void printInOrder() {
         if (left != null) {
             left.printInOrder();
         }
         System.out.println(data);
+        if (right != null) {
+            right.printInOrder();
+        }
+    }
+
+    /**
+     * Depth-first search POST ORDER - DFS
+     */
+    public void printInPostOrder() {
+        if (left != null) {
+            left.printInPostOrder();
+        }
+        if (right != null) {
+            right.printInPostOrder();
+        }
+        System.out.println(data);
+    }
+
+    /**
+     * Depth-first search PRE ORDER - DFS
+     */
+    public void printInPreOrder() {
+        System.out.println(data);
+        if (left != null) {
+            left.printInOrder();
+        }
         if (right != null) {
             right.printInOrder();
         }
