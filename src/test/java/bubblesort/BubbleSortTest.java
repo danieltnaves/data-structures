@@ -1,6 +1,5 @@
 package bubblesort;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,4 +12,5 @@ public class BubbleSortTest {
         BubbleSort.sort(nums);
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 10, 50}, nums);
     }
+
 }
