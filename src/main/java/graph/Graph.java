@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Graph {
 
@@ -41,4 +42,25 @@ public class Graph {
 
     }
 
+    public void DFS(int vertex) {
+
+        boolean viseted[] = new boolean[vertices];
+        Stack<Integer> stack = new Stack<>();
+        viseted[vertex] = true; //mark current vertex as visited and stack it
+        System.out.println(String.format("Starting at %s", vertex));
+        stack.add(vertex);
+
+        while (!stack.isEmpty()) {
+            vertex = stack.pop();
+            System.out.println(String.format("Poping %s", vertex));
+            for (Integer adjacency : adjacencies[vertex]) {
+                if (!viseted[adjacency]) {
+                    stack.add(adjacency);
+                    viseted[adjacency] = true;
+                    System.out.println(String.format("Pushing %s", adjacency));
+                }
+            }
+        }
+
+    }
 }
